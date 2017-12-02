@@ -1,0 +1,16 @@
+<div class="container">
+
+    {% if trending_post_list %}
+        <ul>
+            {% for post in trending_post_list %}
+
+                {% include 'core/post_card.html' %}
+
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="alert alert-success" role="alert">
+            No post are available.
+        </div>
+    {% endif %}
+</div>

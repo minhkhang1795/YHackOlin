@@ -1,0 +1,22 @@
+{% extends 'core/base_generic.html' %}
+
+{% block content %}
+    <p>Post details page</p>
+
+    {% if is_author %}
+        <a href="{% url 'social_app:post_editing' post.id %}"
+           class="btn btn-outline-primary">Edit</a>
+        <br>
+    {% endif %}
+
+    <label for="title">Title: {{ post.title }}</label>
+
+    <br>
+
+    <label for="short_description">Short Description: {{ post.short_description }}</label>
+
+    <br>
+
+    <label for="story">Story: {{ post.title }}</label>
+
+{% endblock %}

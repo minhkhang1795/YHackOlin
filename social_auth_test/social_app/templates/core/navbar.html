@@ -1,0 +1,12 @@
+{% if user.is_authenticated and not user.is_superuser %}
+    <h1>Hello {{ user.username }}!</h1>
+    <a href="{% url "social_app:logout" %}" class="btn btn-outline-primary">Logout </a>
+{% else %}
+    <h1> Hello anonymous</h1>
+{% endif %}
+
+
+<form id="searchform" action="." method="get" accept-charset="utf-8">
+    <input id="search_box" type="text" name="search_box" placeholder="Search...">
+    <button id="search_submit" type="submit">Submit</button>
+</form>

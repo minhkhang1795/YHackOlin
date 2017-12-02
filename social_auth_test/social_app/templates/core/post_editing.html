@@ -1,0 +1,32 @@
+{% extends 'core/base_generic.html' %}
+
+{% block content %}
+    <p>Post edit page</p>
+    <form method="post" action="{% url 'social_app:post_editing' post.id %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input class="form-control" type="text" name="title" autofocus id="title" maxlength="254"
+                   value="{{ post.title }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="short_description">Short Description:</label>
+            <input class="form-control" type="text" name="short_description" autofocus
+                   value="{{ post.short_description }}" id="short_description"
+                   maxlength="254" required>
+        </div>
+
+        <div class="form-group">
+            <label for="story">Story:</label>
+            <input class="form-control" type="text" name="story" autofocus value="{{ post.story }}"
+                   id="story" maxlength="254" required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary"/>
+            <input type="hidden" name="next" value="{% url 'social_app:post_editing' post.id %}"/>
+        </div>
+    </form>
+{% endblock %}
