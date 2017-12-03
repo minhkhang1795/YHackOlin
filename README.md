@@ -1,6 +1,10 @@
 # YHackOlin
 Code for YHack 2017
 
+tl;dr: We've created a platform for users to share projects they've worked on and find projects they're interested in.
+
+## Our Story:
+
 ## Inspiration
 As students who come from a tiny school with a project-based learning curriculum and culture, we were inspired by the fact that even in our close community there are many awesome and interesting projects going on that we don't know about. Upon talking to people from different universities here at YHack, we found that students from larger schools are even less aware of the projects going on around them, especially outside of their majors. Our web app provides an easy way for anyone to share their projects with a large number of people, and a way for people- college students in particular- to inform themselves about what others are doing, and what kinds of things they could try in the future.
 
