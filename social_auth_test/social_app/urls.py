@@ -12,6 +12,11 @@ urlpatterns = [
     url(r'^trending/$', views.post_listing, name='post_list_view'),
     url(r'^home/$', views.home, name='post_list_view'),
     url(r'^(?P<post_id>[0-9]+)/$', views.post_details, name='post_details'),
-
     url(r'^(?P<post_id>[0-9]+)/edit/$', views.post_editing, name='post_editing'),
+
+    url(r'^like-post/$', views.like_count, name='like_count'),
 ]
+
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+urlpatterns += staticfiles_urlpatterns()

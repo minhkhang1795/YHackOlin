@@ -1,7 +1,9 @@
 {% extends 'core/base_generic.html' %}
 
 {% block content %}
-    <p>Post edit page</p>
+
+    <h3>Post edit page</h3>
+
     <form method="post" action="{% url 'social_app:post_editing' post.id %}">
         {% csrf_token %}
 
@@ -11,17 +13,35 @@
                    value="{{ post.title }}" required>
         </div>
 
+        {% if post.categories.all %}
+            <div class="form-group">
+                <label for="categories">Category select</label>
+
+                {% for category in post.categories.all %}
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="category_check_box"
+                                   id="category_check_box"
+                                   value="option1" checked>
+                            {{ category.name }}
+                        </label>
+                    </div>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+
         <div class="form-group">
             <label for="short_description">Short Description:</label>
-            <input class="form-control" type="text" name="short_description" autofocus
-                   value="{{ post.short_description }}" id="short_description"
-                   maxlength="254" required>
+            <textarea class="form-control" name="short_description" autofocus
+                      id="short_description"
+                      maxlength="254">{{ post.short_description }}</textarea>
         </div>
 
         <div class="form-group">
             <label for="story">Story:</label>
-            <input class="form-control" type="text" name="story" autofocus value="{{ post.story }}"
-                   id="story" maxlength="254" required>
+            <textarea class="form-control" name="story" autofocus
+                      id="story" maxlength="254">{{ post.story }}</textarea>
         </div>
 
         <div class="form-group">

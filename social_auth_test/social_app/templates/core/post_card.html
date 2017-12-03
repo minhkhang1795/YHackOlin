@@ -1,10 +1,11 @@
-<div class="card mb-3">
-    <div class="card-body">
-        <h4 class="card-title">{{ post.title }}</h4>
-        <p class="card-text">{{ post.short_description }}</p>
-        <p class="card-text">{{ post.story }}</p>
-        <a href="{% url 'social_app:post_details' post.id %}"
-           class="btn btn-outline-primary">More</a>
-
+{% load static %}
+<article>
+    <a href="#" class="image">
+        <img src="{% static "social_app/img/bg.jpg" %}" alt="Circle Image"/>
+    </a>
+    <div class="caption">
+        <h2>{{ post.title }}</h2>
+        <p>Likes: {{ post.get_like_count }}</p>
+        <p>Views: {{ post.get_view_count }}</p>
     </div>
-</div>
+</article>

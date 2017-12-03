@@ -1,17 +1,19 @@
+from functools import reduce
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from social_django.models import UserSocialAuth
+import operator
+from social_app.models import Post, LikeTable
+from django.db.models import Q
 
-from social_app.models import Post
 
-
-@login_required
 def home(request):
     return post_listing(request)
 
@@ -98,10 +100,37 @@ def post_listing(request):
     if request.method == 'GET':
         search_query = request.GET.get('search_box', None)
 
-    if search_query is None:
+    if not search_query:
         trending_post_list = Post.objects.order_by('-pub_date')[:5]
     else:
-        trending_post_list = Post.objects.order_by('-pub_date')[:5]
+
+        query_list = search_query.split()
+        trending_post_list = Post.objects.filter(
+            reduce(operator.and_,
+                   (Q(title__icontains=q) for q in query_list)) |
+            reduce(operator.and_,
+                   (Q(short_description__icontains=q) for q in query_list)) |
+            reduce(operator.and_,
+                   (Q(story__icontains=q) for q in query_list))
+        )
 
     context = {'trending_post_list': trending_post_list}
     return render(request, 'core/home.html', context)
+
+
+def like_count(request):
+
+    if request.method == 'GET':
+        post_id = request.GET['post_id']
+        post = Post.objects.get(id=int(post_id))
+
+        liked = post in request.user.creator.liketable_set
+
+        if liked:
+            print("unlike")
+        else:
+            print("like")
+            LikeTable.objects.get_or_create(created=request.user.creator, post=post)
+
+
+    return HttpResponse()

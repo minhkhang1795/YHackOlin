@@ -13,10 +13,26 @@
 
     <br>
 
+    {% if post.categories.all %}
+        <label for="title">Categories:</label>
+        {% for category in post.categories.all %}
+            <p>{{ category.name }}</p>
+        {% endfor %}
+        <br>
+    {% endif %}
+
+    {% if post.experiences.all %}
+        <label for="title">Experience:</label>
+        {% for experience in post.experiences.all %}
+            <p>{{ experience.name }}</p>
+        {% endfor %}
+        <br>
+    {% endif %}
+
     <label for="short_description">Short Description: {{ post.short_description }}</label>
 
     <br>
 
-    <label for="story">Story: {{ post.title }}</label>
+    <label for="story">Story: {{ post.story }}</label>
 
 {% endblock %}

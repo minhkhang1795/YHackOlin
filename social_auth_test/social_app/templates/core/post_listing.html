@@ -1,13 +1,18 @@
 <div class="container">
 
     {% if trending_post_list %}
-        <ul>
+        <div class="gallery style1 onscroll-fade-in">
             {% for post in trending_post_list %}
 
                 {% include 'core/post_card.html' %}
+                 {% include 'core/post_card.html' %}
+                 {% include 'core/post_card.html' %}
+                 {% include 'core/post_card.html' %}
+                 {% include 'core/post_card.html' %}
+
 
             {% endfor %}
-        </ul>
+        </div>
     {% else %}
         <div class="alert alert-success" role="alert">
             No post are available.
