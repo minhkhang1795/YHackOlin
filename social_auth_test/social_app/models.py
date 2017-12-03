@@ -34,28 +34,31 @@ class Experience(models.Model):
 
 class Post(models.Model):
     creator = models.ForeignKey(Creator, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200, default="")
-    short_description = models.TextField(blank=True, default="")
+    title = models.CharField(max_length=200, default="Project Title")
+    short_description = models.TextField(blank=True, default="Describe your awesome project!")
     story = models.TextField(blank=True, default="")
     pub_date = models.DateTimeField('date published', default=timezone.now)
     categories = models.ManyToManyField(Category, blank=True)
     experiences = models.ManyToManyField(Experience, blank=True)
 
-    pictures = models.TextField(blank=True, default="", null=True)
-
-    def get_like_count(self):
-
-        return self.liketable_set.all().count()
-
+    pictures = models.TextField(blank=True, default="/social_app/img/blank.gif", null=True)
+    members = models.TextField(blank=True, default="Utsav, Khang, Emma, Diego")
     # personal_links = models.TextField(blank=True, default="", null=True)
     # helpful_links = models.TextField(blank=True, default="")
     # material_ls = models.TextField(blank=True, default="")
-    # favorite_count = models.IntegerField(default=0)
-    # view_count = models.IntegerField(default=0)
+    like_count = models.IntegerField(default=0)
+    view_count = models.IntegerField(default=0)
+
     # vote_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    def get_like_count(self):
+        return self.like_count
+
+    def get_view_count(self):
+        return self.view_count
 
 
 class LikeTable(models.Model):

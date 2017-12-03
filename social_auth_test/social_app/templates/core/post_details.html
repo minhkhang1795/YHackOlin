@@ -1,38 +1,62 @@
 {% extends 'core/base_generic.html' %}
-
+{% load static %}
 {% block content %}
-    <p>Post details page</p>
+
+    <h2> {{ post.title }}</h2>
+    <h4>Author: {{ post.creator.user.first_name }}</h4>
+    <section class="banner style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+             id="first">
+        <div class="content" style="padding: 16px 0 16px 0; max-width: 30%; margin: 0 0 0 24px">
+            <h4><strong>Team Members</strong></h4>
+            {% if post.creator.members %}
+                <p>{{ post.creator.members }}</p>
+            {% else %}
+                <p>Utsav, Khang, Emma, Diego</p>
+            {% endif %}
+            <h4><strong>Categories</strong></h4>
+            <p>{% for category in post.categories.all %}
+                #{{ category.name }}
+            {% endfor %}</p>
+            <h4><strong>Experience Level</strong></h4>
+            <p>College</p>
+            {#            <ul class="actions vertical">#}
+            {#                <li><a href="#" class="button">Learn More</a></li>#}
+            {#            </ul>#}
+        </div>
+        <div class="image" style="max-width: 70%">
+            <img src="{% static post.pictures %}"/>
+        </div>
+    </section>
+
+
+    {#    {% if post.categories.all %}#}
+    {#        <label for="title">Categories:</label>#}
+    {#        {% for category in post.categories.all %}#}
+    {#            <p>{{ category.name }}</p>#}
+    {#        {% endfor %}#}
+    {#        <br>#}
+    {#    {% endif %}#}
+    {##}
+    {#    {% if post.experiences.all %}#}
+    {#        <label for="title">Experience:</label>#}
+    {#        {% for experience in post.experiences.all %}#}
+    {#            <p>{{ experience.name }}</p>#}
+    {#        {% endfor %}#}
+    {#        <br>#}
+    {#    {% endif %}#}
+
+    <br>
+    <h4><strong>Short Description</strong></h4>
+    <p>{{ post.short_description }}</p>
+
+    <h4><strong>Story</strong></h4>
+    <p>{{ post.story }}</p>
 
     {% if is_author %}
         <a href="{% url 'social_app:post_editing' post.id %}"
-           class="btn btn-outline-primary">Edit</a>
+           class="button special">Edit your post</a>
         <br>
     {% endif %}
 
-    <label for="title">Title: {{ post.title }}</label>
-
-    <br>
-
-    {% if post.categories.all %}
-        <label for="title">Categories:</label>
-        {% for category in post.categories.all %}
-            <p>{{ category.name }}</p>
-        {% endfor %}
-        <br>
-    {% endif %}
-
-    {% if post.experiences.all %}
-        <label for="title">Experience:</label>
-        {% for experience in post.experiences.all %}
-            <p>{{ experience.name }}</p>
-        {% endfor %}
-        <br>
-    {% endif %}
-
-    <label for="short_description">Short Description: {{ post.short_description }}</label>
-
-    <br>
-
-    <label for="story">Story: {{ post.story }}</label>
 
 {% endblock %}

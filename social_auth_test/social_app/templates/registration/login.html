@@ -1,15 +1,24 @@
 {% extends 'core/home.html' %}
 
-{% block content %}
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-    <br>
-    <p><strong>-- OR --</strong></p>
-    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
-    <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
-    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a><br>
-{% endblock %}
+<div class="container">
+    {% block content %}
+
+        <div style="max-width: 35%; margin: 0 auto">
+            <h2><strong>Login</strong></h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button style="margin: -12px auto; max-width: 100%" class="button special fit" type="submit">Login
+                </button>
+
+            </form>
+            <a style="margin: 0 auto; max-width: 100%" class="button default fit icon fa-github"
+               href="{% url 'social:begin' 'github' %}">Login with GitHub</a>
+            <a style="margin: 25px auto; max-width: 100%" class="button default fit icon fa-google-plus" href="{% url 'social:begin' 'google-oauth2' %}">Login with
+                Google</a>
+            <a style="margin: 25px auto; max-width: 100%" class="button default fit icon fa-facebook"
+               href="{% url 'social:begin' 'facebook' %}">Login with
+                Facebook</a>
+        </div>
+    {% endblock %}
+</div>

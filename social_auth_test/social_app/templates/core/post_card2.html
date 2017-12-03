@@ -1,10 +1,10 @@
 {% load static %}
 <article>
     <a href="{% url 'social_app:post_details' post.id %}" class="image">
-        <img src="{% static post.pictures %}" alt="Circle Image"/>
+        <img src="{{ post.pictures }}" alt="Circle Image"/>
     </a>
     <div class="caption">
-        <h2><strong>{{ post.title }}</strong></h2>
+        <h2>{{ post.title }}</h2>
         <p>Likes: {{ post.get_like_count }}</p>
         <p>Views: {{ post.get_view_count }}</p>
     </div>

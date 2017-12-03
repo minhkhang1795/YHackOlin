@@ -2,11 +2,8 @@
 
 {% block content %}
 
-    {% if post %}
-        <h2>Edit your project</h2>
-    {% else %}
-        <h2>Add your project!</h2>
-    {% endif %}
+    <h2>Add your project!</h2>
+
     {#    <form method="post" action="{% url 'social_app:post_editing' post.id %}">#}
     {#        {% csrf_token %}#}
     {##}
@@ -55,24 +52,24 @@
 
 
     <div class="content">
-        <form method="post" action="#">
+        <form method="post" action="{% url 'social_app:post_new' %}">
             {% csrf_token %}
             <div class="field half first">
                 <label for="name">Name</label>
-                <input type="text" name="title" id="title" value="{{ post.title }}">
+                <input type="text" name="name" id="name" value="">
             </div>
             <div class="field half">
                 <label for="member">Team Members</label>
-                <input type="text" name="member" id="member" value="Utsav, Khang, Emma, Diego">
+                <input type="text" name="member" id="member" value="">
             </div>
             <div class="field">
                 <label for="category">Category</label>
                 <div class="field third first">
-                    <input type="checkbox" id="copy" name="copy" checked>
+                    <input type="checkbox" id="copy" name="copy">
                     <label for="copy">Electrical</label>
                 </div>
                 <div class="field third">
-                    <input type="checkbox" id="human" name="human" checked>
+                    <input type="checkbox" id="human" name="human">
                     <label for="human">Computer</label>
                 </div>
                 <div class="field third">
@@ -83,7 +80,7 @@
 
             <div class="field">
                 <div class="field third first">
-                    <input type="checkbox" id="human" name="human" checked>
+                    <input type="checkbox" id="human" name="human">
                     <label for="human">Robotics</label>
                 </div>
                 <div class="field third">
@@ -136,22 +133,21 @@
 
             <div class="field">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" rows="3">{{ post.short_description }}</textarea>
+                <textarea name="description" id="description" rows="3"></textarea>
             </div>
             <div class="field">
                 <label for="story">Story</label>
-                <textarea name="story" id="story" rows="8">{{ post.story }}</textarea>
+                <textarea name="story" id="story" rows="8"></textarea>
             </div>
 
-        </form>
-        <form method="post" action="{% url 'social_app:post_details' post.id %}">
             {% csrf_token %}
             <ul class="actions">
                 <li><input class="button special" type="submit" name="submit" id="submit" value="Save"></li>
-                <li><input class="button default" href="{% url "social_app:post_details" post.id %}" type="submit"
+                <li><input class="button default" href="{% url "home" %}" type="submit"
                            name="submit"
                            id="submit" value="Cancel"></li>
             </ul>
         </form>
+
     </div>
 {% endblock %}

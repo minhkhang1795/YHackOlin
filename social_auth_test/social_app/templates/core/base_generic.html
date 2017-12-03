@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
 
+    {% load static %}
     <title>The Underground</title>
 
     <meta charset="utf-8"/>
-    {#    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">#}
-    {#    <link rel="icon" type="image/png" href="assets/img/favicon.png">#}
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static "social_app/img/apple-icon.png" %}">
+    <link rel="icon" type="image/png" href="{% static "social_app/img/apple-icon.png" %}">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    {% load static %}
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
 
     <link rel="stylesheet" href="{% static "social_app/css/bootstrap.css" %}">
-    <link rel="stylesheet" href="{% static 'social_app/css/font-awesome.css' %}">
+    {#    <link rel="stylesheet" href="{% static 'social_app/css/font-awesome.css' %}">#}
 
     <link rel="stylesheet" href="{% static 'social_app/css/gsdk.css' %}">
     <link rel="stylesheet" href="{% static 'social_app/css/demo.css' %}">
     <link rel="stylesheet" href="{% static 'social_app/css/story_main.css' %}">
-    <!--     Font Awesome     -->
+    {#    <link rel="stylesheet" href="{% static 'social_app/css/normalize.min.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'social_app/css/login_style.css' %}">#}
+
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
-
 
 </head>
 
@@ -34,7 +35,7 @@
 
 <div class="container-fluid">
     <div class="main">
-        <div class="container tim-container" style="max-width:1400px; padding-top:100px">
+        <div class="container tim-container" style="max-width:1400px; padding-top: 10px">
             {% block content %}{% endblock %}
         </div>
         <div class="space"></div>
@@ -55,6 +56,6 @@
 <script src="{% static "social_app/js/gsdk-radio.js" %}"></script>
 <script src="{% static "social_app/js/gsdk-bootstrapswitch.js" %}"></script>
 <script src="{% static "social_app/js/get-shit-done.js" %}"></script>
+{#<script src="{% static "social_app/js/jquery213.js" %}"></script>#}
 
-<script src="{% static "social_app/js/custom.js" %}"></script>
 </html>

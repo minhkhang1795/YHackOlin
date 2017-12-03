@@ -70,12 +70,27 @@ def password(request):
 
 
 @login_required()
+def post_new(request):
+    if request.method == 'POST':
+        title = request.POST.get("title", "Project Title")
+        short_description = request.POST.get("description", "Project Description")
+        story = request.POST.get("story", "Project Story")
+        members = request.POST.get("member", "Utsav, Khang, Emma, Diego")
+        creator = request.user.creator
+        Post.objects.get_or_create(title=title, short_description=short_description, story=story,
+                                          creator=creator, members=members)
+        return HttpResponseRedirect(reverse('home'))
+    return render(request, 'core/post_new.html', {'post': None})
+
+
+@login_required()
 def post_editing(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
-        post.title = request.POST["title"]
-        post.short_description = request.POST["short_description"]
-        post.story = request.POST["story"]
+        post.title = request.POST.get("title", "Project Title")
+        post.short_description = request.POST.get("short_description", "Project Description")
+        post.story = request.POST.get("description", "Project Description")
+        post.members = request.POST.get("member", "Utsav, Khang, Emma, Diego")
         post.save()
         return HttpResponseRedirect(reverse('social_app:post_details', args=(post.id,)))
     return render(request, 'core/post_editing.html', {'post': post})
@@ -101,7 +116,7 @@ def post_listing(request):
         search_query = request.GET.get('search_box', None)
 
     if not search_query:
-        trending_post_list = Post.objects.order_by('-pub_date')[:5]
+        trending_post_list = Post.objects.order_by('-pub_date')
     else:
 
         query_list = search_query.split()
@@ -119,7 +134,6 @@ def post_listing(request):
 
 
 def like_count(request):
-
     if request.method == 'GET':
         post_id = request.GET['post_id']
         post = Post.objects.get(id=int(post_id))
@@ -132,5 +146,10 @@ def like_count(request):
             print("like")
             LikeTable.objects.get_or_create(created=request.user.creator, post=post)
 
-
     return HttpResponse()
+
+
+def favorite(request):
+    trending_post_list = Post.objects.order_by('-title')[:4]
+    context = {'trending_post_list': trending_post_list}
+    return render(request, 'core/favorite.html', context)
