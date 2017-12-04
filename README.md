@@ -29,7 +29,7 @@ For the web app, we would probably try to fix bugs, add more functionalities to 
 
 ## Showcase
 
-![Video](https://drive.google.com/file/d/1R9AJ8Jm50DOOfg8H8twyfkgoiB43revL/view?usp=sharing)
+![Video](https://www.youtube.com/watch?v=IbwtVWW4mkc)
 
 ![Media files](https://github.com/Utsav22G/YHackOlin/tree/master/media)
 
