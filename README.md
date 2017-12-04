@@ -29,8 +29,8 @@ For the web app, we would probably try to fix bugs, add more functionalities to 
 
 ## Showcase
 
-![Video](https://www.youtube.com/watch?v=IbwtVWW4mkc)
+[Video](https://www.youtube.com/watch?v=IbwtVWW4mkc)
 
-![Media files](https://github.com/Utsav22G/YHackOlin/tree/master/media)
+[Media files](https://github.com/Utsav22G/YHackOlin/tree/master/media)
 
 *Made with &#9829; by Utsav, Khang, Emma, Diego*
