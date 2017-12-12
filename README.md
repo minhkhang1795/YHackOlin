@@ -29,6 +29,16 @@ For the web app, we would probably try to fix bugs, add more functionalities to 
 
 ## Showcase
 
+Home page
+![homepage](https://github.com/Utsav22G/YHackOlin/blob/master/media/home_page.png)
+
+Project Details
+![details](https://github.com/Utsav22G/YHackOlin/blob/master/media/project_page.png)
+
+Login
+![login](https://github.com/Utsav22G/YHackOlin/blob/master/media/login.png)
+
+
 [Video](https://www.youtube.com/watch?v=IbwtVWW4mkc)
 
 [Media files](https://github.com/Utsav22G/YHackOlin/tree/master/media)
