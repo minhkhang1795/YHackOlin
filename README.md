@@ -1,4 +1,4 @@
-# YHackOlin: The Underground
+# YHackOlin: Project Underground
 Code for YHack 2017
 
 tl;dr: We've created a platform for users to share projects they've worked on and find projects they're interested in.
